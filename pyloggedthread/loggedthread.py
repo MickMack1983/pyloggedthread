@@ -18,6 +18,10 @@ class LoggedThread():
         try:
             self.__target(*args, **kwargs)
         except:
+            if not self.log:
+                self.log = logging.getLogger("LoggedThread-" + str(self.t.ident))
             self.log.error(traceback.format_exc())
         finally:
+            if not self.log:
+                self.log = logging.getLogger("LoggedThread-" + str(self.t.ident))
             self.log.debug("terminated")
