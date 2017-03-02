@@ -11,7 +11,7 @@ class LoggedThread():
     def start(self):
         self.t.start()
         if not self.log:
-            logging.getLogger("LoggedThread-" + str(self.t.ident))
+            self.log = logging.getLogger("LoggedThread-" + str(self.t.ident))
         self.log.debug("started")
 
     def wrapper(self, *args, **kwargs):
