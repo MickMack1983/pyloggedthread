@@ -19,10 +19,11 @@ class LoggedThread:
         # noinspection PyBroadException
         try:
             self.__target(*args, **kwargs)
-        except:
+        except Exception as e:
             if not self.log:
                 self.log = logging.getLogger("LoggedThread-" + str(self.t.ident))
             self.log.error(traceback.format_exc())
+            raise e
         finally:
             if not self.log:
                 self.log = logging.getLogger("LoggedThread-" + str(self.t.ident))
