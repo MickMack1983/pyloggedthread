@@ -7,6 +7,6 @@ setup(
     description='Basic replacement for threading.Thread that logs start and termination of thread and exceptions,',
     author='Mikael Magnusson',
     author_email='mikael.m.magnusson@gmail.com',
-    packages=[ 'pyloggedthread'   ],
+    packages=['pyloggedthread'],
     requires=['logging']
 )

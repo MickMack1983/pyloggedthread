@@ -2,7 +2,8 @@ from threading import Thread
 import logging
 import traceback
 
-class LoggedThread():
+
+class LoggedThread:
     def __init__(self, group=None, target=None, name=None, log=None, *args, **kwargs):
         self.__target = target
         self.log = log if log else None
@@ -15,6 +16,7 @@ class LoggedThread():
         self.log.debug("started")
 
     def wrapper(self, *args, **kwargs):
+        # noinspection PyBroadException
         try:
             self.__target(*args, **kwargs)
         except:
